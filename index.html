@@ -11,6 +11,7 @@
     <header id="barra-topo">
       <div class="logo">
         <div>
+          <img class="logo-image" src="assets/img/logofull.png">
           <h1 id="titulo">Gerenciamento de Matrículas - Olá, Coordenador</h1>
           <button type="button" id="addMTR">+ Adicionar Matrícula</button>
         </div>
@@ -43,9 +44,9 @@
             <td></td>
             <td>
               <div id="actionbtn">
-                <button>Ficha</button>
-                <button>Editar</button>
-                <button>Apagar</button>
+                <button id="obspg">Obs.</button>
+                <button id="edit">Editar</button>
+                <button id="del">Apagar</button>
               </div>
             </td>
           </tr>
@@ -59,9 +60,9 @@
             <td></td>
             <td></td>
             <td><div id="actionbtn">
-                <button>Ficha</button>
-                <button>Editar</button>
-                <button>Apagar</button>
+                <button id="obspg">Obs.</button>
+                <button id="edit">Editar</button>
+                <button id="del">Apagar</button>
               </div></td>
           </tr>
         </tbody>
@@ -70,8 +71,9 @@
 
   <!-- Remova o "oculto" da classe para ver o Overlay de matrícula -->
 
-    <div id="overlay-matricula" class="overlay-matricula oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-matricula">
-  <div id="modal-matricula" class="modal-matricula">
+    <div id="overlay-modal" class="overlay-modal oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-matricula">
+      <div class="overlay-background"></div>
+  <div id="modal-matricula" class="modal-matricula modal-container">
     <div class="modal-cabecalho">
       <h2 id="titulo-modal-matricula" class="modal-titulo">Cadastro de Matrícula</h2>
       <button type="button" id="btn-fechar-modal" class="btn-fechar" aria-label="Fechar">&times;</button>
@@ -80,9 +82,14 @@
     <form id="form-matricula" class="form-matricula">
       <div class="modal-corpo">
         <div class="grade-campos">
-          <div class="campo campo-inteiro">
+          <div class="campo">
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="Nome" class="campo-input" placeholder="Nome completo do aluno" required />
+          </div>
+
+          <div class="campo">
+            <label for="turma">Turma</label>
+            <input type="text" id="turma" name="turma" class="campo-input" placeholder="1º A" Required>
           </div>
 
           <div class="campo">
@@ -124,7 +131,7 @@
 
           <div class="campo">
             <label for="nb4">4º Bimestre</label>
-            <input type="number" id="nota-bimestre-4" name="notaBimestre4" class="campo-input campo-nota" data-bimestre="4" min="0" max="10" step="0.1" placeholder="0.0" />
+            <input type="number" id="nb4" name="nb4" class="campo-input campo-nota" data-bimestre="4" min="0" max="10" step="0.1" placeholder="0.0" />
           </div>
         </div>
 
@@ -152,6 +159,20 @@
       </div>
     </form>
   </div>
+</div>
+
+<div id="overlay-modal" class="overlay-modal oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-matricula">
+  <div class="overlay-background"></div>
+  <div id="modal-obs" class="modal-obs modal-container">
+    <div class="modal-cabecalho">
+      <h2 id="titulo-modal-matricula" class="modal-titulo">Observações</h2>
+      <button type="button" id="btn-fechar-modal" class="btn-fechar" aria-label="Fechar">&times;</button>
+      
+    </div>
+    <p id="obs">Texto observação</p>
+    
+        </div>
+      
 </div>
 
   </body>
