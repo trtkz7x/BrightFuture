@@ -7,6 +7,8 @@ body {
   font-family: "open Sans";
 }
 
+
+
 #barra-topo {
   background-color: #1d4ed8;
   width: 100%;
@@ -170,7 +172,7 @@ body {
 
 #addMTR {
   padding: 10px 18px;
-  background-color: #2563eb;
+  background-color: #F97316;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -181,7 +183,7 @@ body {
 }
 
 #addMTR:hover {
-  background-color: #143694;
+  background-color: #ea580c;
   transition: 0.2s;
 }
 
@@ -197,8 +199,8 @@ header h1 {
   margin: 0;
 }
 
-#overlay-modal,
-#overlay-modal * {
+.overlay-modal,
+.overlay-modal * {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
 }
@@ -244,7 +246,7 @@ header h1 {
   left: 0;
 }
 
-#overlay-modal .modal-cabecalho {
+.overlay-modal .modal-cabecalho {
   background-color: #1d4ed8;
   color: #ffffff;
   display: flex;
@@ -253,13 +255,13 @@ header h1 {
   padding: 14px 20px;
 }
 
-#overlay-modal .modal-titulo {
+.overlay-modal .modal-titulo {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
 }
 
-#overlay-modal .btn-fechar {
+.overlay-modal .btn-fechar {
   background: none;
   border: none;
   color: #ffffff;
@@ -268,49 +270,49 @@ header h1 {
   cursor: pointer;
 }
 
-#overlay-modal .form-matricula {
+.overlay-modal .form-matricula {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
 
-#overlay-modal .modal-corpo {
+.overlay-modal .modal-corpo {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-#overlay-modal .grade-campos {
+.overlay-modal .grade-campos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-#overlay-modal .grade-notas {
+.overlay-modal .grade-notas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
-#overlay-modal .campo {
+.overlay-modal .campo {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-#overlay-modal .campo-inteiro {
+.overlay-modal .campo-inteiro {
   grid-column: 1 / -1;
 }
 
-#overlay-modal label {
+.overlay-modal label {
   font-size: 13px;
   font-weight: 600;
   color: #1f2937;
 }
 
-#overlay-modal .campo-input,
-#overlay-modal .campo-textarea {
+.overlay-modal .campo-input,
+.overlay-modal .campo-textarea {
   width: 100%;
   padding: 8px 10px;
   font-size: 14px;
@@ -320,21 +322,21 @@ header h1 {
   outline: none;
 }
 
-#overlay-modal .campo-input:focus,
-#overlay-modal .campo-textarea:focus {
+.overlay-modal .campo-input:focus,
+.overlay-modal .campo-textarea:focus {
   border-color: #2563eb;
 }
 
-#overlay-modal .campo-media {
+.overlay-modal .campo-media {
   background-color: #f8fafc;
   font-weight: 600;
 }
 
-#overlay-modal .campo-textarea {
+.overlay-modal .campo-textarea {
   resize: vertical;
 }
 
-#overlay-modal .modal-rodape {
+.overlay-modal .modal-rodape {
   background-color: #f8fafc;
   border-top: 1px solid #e5e7eb;
   padding: 14px 20px;
@@ -343,7 +345,7 @@ header h1 {
   gap: 10px;
 }
 
-#overlay-modal .btn-cancelar {
+.overlay-modal .btn-cancelar {
   background-color: rgba(56, 56, 56, 0.08);
   color: #333333;
   border: none;
@@ -354,13 +356,13 @@ header h1 {
   cursor: pointer;
 }
 
-#overlay-modal .btn-cancelar:hover {
+.overlay-modal .btn-cancelar:hover {
   color: #333333;
   background-color: rgb(41 40 40 / 34%);
   transition: 0.2s;
 }
 
-#overlay-modal .btn-salvar {
+.overlay-modal .btn-salvar {
   background-color: #2563eb;
   color: #ffffff;
   border: none;
@@ -371,9 +373,103 @@ header h1 {
   cursor: pointer;
 }
 
-#overlay-modal .btn-salvar:hover {
+.overlay-modal .btn-salvar:hover {
   background-color: #143694;
   transition: 0.2s;
+}
+
+#btn-salvar-matricula {
+  background-color: #F97316;
+}
+
+#btn-salvar-matricula:hover {
+  background-color: #ea580c;
+}
+
+.status-circulo {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.status-circulo.aprovado {
+  background-color: #16A34A;
+}
+
+.status-circulo.recuperacao {
+  background-color: #FACC15;
+}
+
+.status-circulo.reprovado {
+  background-color: #F97316;
+}
+
+.btn-ficha {
+  position: relative;
+}
+
+.btn-ficha.tem-aviso::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #FACC15;
+  border: 1.5px solid #ffffff;
+}
+
+.ficha-aluno-info {
+  font-size: 14px;
+  color: #1f2937;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.lista-historico-obs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lista-historico-obs li {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #1D4ED8;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #1f2937;
+  white-space: normal;
+  line-height: 1.45;
+}
+
+.lista-historico-obs li.obs-recente {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #eff6ff;
+}
+
+.lista-historico-obs li.obs-antiga {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  border-left-color: #cbd5e1;
+  padding: 7px 10px;
+}
+
+.lista-historico-obs li.obs-vazia {
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+  border-left-color: #cbd5e1;
 }
 
 .modal-obs p {
@@ -389,12 +485,12 @@ header h1 {
   transition: 0.2s;
 }
 
-#btn-fechar-modal:hover {
+.btn-fechar:hover {
   background-color: white;
   color: #1d4ed8;
 }
 
-#btn-fechar-modal {
+.btn-fechar {
   border-radius: 12px;
   transition: 0.2s;
 }
