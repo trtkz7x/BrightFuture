@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bright Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header id="barra-topo">
       <div class="logo">
         <div>
-          <img class="logo-image" src="assets/img/logofull.png">
+          <img class="logo-image" src="assets/img/logofull.png" />
           <h1 id="titulo">Gerenciamento de Matrículas - Olá, Coordenador</h1>
-          <button type="button" id="addMTR">+ Adicionar Matrícula</button>
+          <div id="btns">
+            <a href="obs.html" id="obspg">Observações</a>
+            <button type="button" id="addMTR">+ Adicionar Matrícula</button>
+          </div>
         </div>
       </div>
     </header>
@@ -33,7 +39,7 @@
           </tr>
         </thead>
         <tbody id="corpo-tabela-alunos">
-          <tr>
+          <tr>            
             <td>1089534</td>
             <td>Adriano</td>
             <td>3º A</td>
@@ -44,7 +50,8 @@
             <td></td>
             <td>
               <div id="actionbtn">
-                <button id="obspg">Obs.</button>
+                <button id="ficha">Ficha</button>
+                <button id="obs">Obs</button>
                 <button id="edit">Editar</button>
                 <button id="del">Apagar</button>
               </div>
@@ -59,121 +66,673 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><div id="actionbtn">
-                <button id="obspg">Obs.</button>
+            <td>
+              <div id="actionbtn">
+                <button id="ficha">Ficha</button>
+                <button id="obs">Obs</button>
                 <button id="edit">Editar</button>
                 <button id="del">Apagar</button>
-              </div></td>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-  <!-- Remova o "oculto" da classe para ver o Overlay de matrícula -->
+    <!-- Remova o "oculto" da classe para ver o Overlay de matrícula -->
 
-    <div id="overlay-modal" class="overlay-modal oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-matricula">
+    <div
+      id="overlay-modal"
+      class="overlay-modal oculto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-modal-matricula"
+    >
       <div class="overlay-background"></div>
-  <div id="modal-matricula" class="modal-matricula modal-container">
-    <div class="modal-cabecalho">
-      <h2 id="titulo-modal-matricula" class="modal-titulo">Cadastro de Matrícula</h2>
-      <button type="button" id="btn-fechar-modal" class="btn-fechar" aria-label="Fechar">&times;</button>
+      <div id="modal-matricula" class="modal-matricula modal-container">
+        <div class="modal-cabecalho">
+          <h2 id="titulo-modal-matricula" class="modal-titulo">
+            Cadastro de Matrícula
+          </h2>
+          <button
+            type="button"
+            id="btn-fechar-modal"
+            class="btn-fechar"
+            aria-label="Fechar"
+          >
+            &times;
+          </button>
+        </div>
+
+        <form id="form-matricula" class="form-matricula">
+          <div class="modal-corpo">
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="nome">Nome</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="Nome"
+                  class="campo-input"
+                  placeholder="Nome completo do aluno"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="turma">Turma</label>
+                <input
+                  type="text"
+                  id="turma"
+                  name="turma"
+                  class="campo-input"
+                  placeholder="1º A"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="cpf">CPF</label>
+                <input
+                  type="text"
+                  id="cpf"
+                  name="cpf"
+                  class="campo-input"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="telefone">Telefone</label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="Telefone"
+                  class="campo-input"
+                  placeholder="(00) 00000-0000"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="r-nome">Nome do responsável</label>
+                <input
+                  type="text"
+                  id="r-nome"
+                  name="r-Nome"
+                  class="campo-input"
+                  placeholder="Nome completo do responsável"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="r-contato">Contato do responsável</label>
+                <input
+                  type="tel"
+                  id="r-contato"
+                  name="r-Contato"
+                  class="campo-input"
+                  placeholder="(00) 00000-0000"
+                  required
+                />
+              </div>
+            </div>
+
+            <div id="grupo-notas" class="grade-notas">
+              <div class="campo">
+                <label for="nb1">1º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb1"
+                  name="nb1"
+                  class="campo-input campo-nota"
+                  data-bimestre="1"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb2">2º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb2"
+                  name="nb2"
+                  class="campo-input campo-nota"
+                  data-bimestre="2"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb3">3º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb3"
+                  name="nb3"
+                  class="campo-input campo-nota"
+                  data-bimestre="3"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb4">4º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb4"
+                  name="nb4"
+                  class="campo-input campo-nota"
+                  data-bimestre="4"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+            </div>
+
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="media">Média</label>
+                <input
+                  type="number"
+                  id="media"
+                  name="Media"
+                  class="campo-input campo-media"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="faltas">Faltas</label>
+                <input
+                  type="number"
+                  id="faltas"
+                  name="Faltas"
+                  class="campo-input campo-faltas"
+                  min="0"
+                  step="1"
+                  placeholder="0"
+                />
+              </div>
+
+              
+            </div>
+          </div>
+
+          <div class="modal-rodape">
+            <button type="button" id="btn-cancelar" class="btn-cancelar">
+              Cancelar
+            </button>
+            <button type="submit" id="btn-salvar-matricula" class="btn-salvar">
+              Salvar Matrícula
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <form id="form-matricula" class="form-matricula">
-      <div class="modal-corpo">
-        <div class="grade-campos">
-          <div class="campo">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="Nome" class="campo-input" placeholder="Nome completo do aluno" required />
-          </div>
-
-          <div class="campo">
-            <label for="turma">Turma</label>
-            <input type="text" id="turma" name="turma" class="campo-input" placeholder="1º A" Required>
-          </div>
-
-          <div class="campo">
-            <label for="cpf">CPF</label>
-            <input type="text" id="cpf" name="cpf" class="campo-input" placeholder="000.000.000-00" maxlength="14" required />
-          </div>
-
-          <div class="campo">
-            <label for="telefone">Telefone</label>
-            <input type="tel" id="telefone" name="Telefone" class="campo-input" placeholder="(00) 00000-0000" required />
-          </div>
-
-          <div class="campo">
-            <label for="r-nome">Nome do responsável</label>
-            <input type="text" id="r-nome" name="r-Nome" class="campo-input" placeholder="Nome completo do responsável" required />
-          </div>
-
-          <div class="campo">
-            <label for="r-contato">Contato do responsável</label>
-            <input type="tel" id="r-contato" name="r-Contato" class="campo-input" placeholder="(00) 00000-0000" required />
-          </div>
+   <div
+      id="overlay-modal"
+      class="overlay-modal oculto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-modal-matricula"
+    >
+      <div class="overlay-background"></div>
+      <div id="modal-obs" class="modal-obs modal-container">
+        <div class="modal-cabecalho">
+          <h2 id="titulo-modal-matricula" class="modal-titulo">Ficha</h2>
+          <button
+            type="button"
+            id="btn-fechar-modal"
+            class="btn-fechar"
+            aria-label="Fechar"
+          >
+            &times;
+          </button>
         </div>
 
-        <div id="grupo-notas" class="grade-notas">
-          <div class="campo">
-            <label for="nb1">1º Bimestre</label>
-            <input type="number" id="nb1" name="nb1" class="campo-input campo-nota" data-bimestre="1" min="0" max="10" step="0.1" placeholder="0.0" />
-          </div>
+        <form id="form-matricula" class="form-matricula">
+          <div class="modal-corpo">
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="nome">Nome</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="Nome"
+                  class="campo-input campo-media"
+                  placeholder="Nome completo do aluno"
+                  readonly
+                />
+              </div>
 
-          <div class="campo">
-            <label for="nb2">2º Bimestre</label>
-            <input type="number" id="nb2" name="nb2" class="campo-input campo-nota" data-bimestre="2" min="0" max="10" step="0.1" placeholder="0.0" />
-          </div>
+              <div class="campo">
+                <label for="turma">Turma</label>
+                <input
+                  type="text"
+                  id="turma"
+                  name="turma"
+                  class="campo-input campo-media"
+                  placeholder="1º A"
+                  readonly
+                />
+              </div>
 
-          <div class="campo">
-            <label for="nb3">3º Bimestre</label>
-            <input type="number" id="nb3" name="nb3" class="campo-input campo-nota" data-bimestre="3" min="0" max="10" step="0.1" placeholder="0.0" />
-          </div>
+              <div class="campo">
+                <label for="cpf">CPF</label>
+                <input
+                  type="text"
+                  id="cpf"
+                  name="cpf"
+                  class="campo-input campo-media"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  readonly
+                />
+              </div>
 
-          <div class="campo">
-            <label for="nb4">4º Bimestre</label>
-            <input type="number" id="nb4" name="nb4" class="campo-input campo-nota" data-bimestre="4" min="0" max="10" step="0.1" placeholder="0.0" />
-          </div>
-        </div>
+              <div class="campo">
+                <label for="telefone">Telefone</label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="Telefone"
+                  class="campo-input campo-media"
+                  placeholder="(00) 00000-0000"
+                  readonly
+                />
+              </div>
 
-        <div class="grade-campos">
-          <div class="campo">
-            <label for="media">Média</label>
-            <input type="number" id="media" name="Media" class="campo-input campo-media" step="0.1" placeholder="0.0" readonly />
-          </div>
+              <div class="campo">
+                <label for="r-nome">Nome do responsável</label>
+                <input
+                  type="text"
+                  id="r-nome"
+                  name="r-Nome"
+                  class="campo-input campo-media"
+                  placeholder="Nome completo do responsável"
+                  readonly
+                />
+              </div>
 
-          <div class="campo">
-            <label for="faltas">Faltas</label>
-            <input type="number" id="faltas" name="Faltas" class="campo-input campo-faltas" min="0" step="1" placeholder="0" />
-          </div>
+              <div class="campo">
+                <label for="r-contato">Contato do responsável</label>
+                <input
+                  type="tel"
+                  id="r-contato"
+                  name="r-Contato"
+                  class="campo-input campo-media"
+                  placeholder="(00) 00000-0000"
+                  readonly
+                />
+              </div>
+            </div>
 
-          <div class="campo campo-inteiro">
-            <label for="obs">Observações da coordenação</label>
-            <textarea id="obs" name="obs" class="campo-textarea" rows="3" placeholder="Anotações da coordenação..."></textarea>
+            <div id="grupo-notas" class="grade-notas">
+              <div class="campo">
+                <label for="nb1">1º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb1"
+                  name="nb1"
+                  class="campo-input campo-nota campo-media"
+                  data-bimestre="1"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb2">2º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb2"
+                  name="nb2"
+                  class="campo-input campo-nota campo-media"
+                  data-bimestre="2"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb3">3º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb3"
+                  name="nb3"
+                  class="campo-input campo-nota campo-media"
+                  data-bimestre="3"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb4">4º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb4"
+                  name="nb4"
+                  class="campo-input campo-nota campo-media"
+                  data-bimestre="4"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="media">Média</label>
+                <input
+                  type="number"
+                  id="media"
+                  name="Media"
+                  class="campo-input campo-media"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="faltas">Faltas</label>
+                <input
+                  type="number"
+                  id="faltas"
+                  name="Faltas"
+                  class="campo-input campo-faltas campo-media"
+                  min="0"
+                  step="1"
+                  placeholder="0"
+                  readonly
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
+    </div> 
 
-      <div class="modal-rodape">
-        <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-        <button type="submit" id="btn-salvar-matricula" class="btn-salvar">Salvar Matrícula</button>
+    <div
+      id="overlay-modal"
+      class="overlay-modal oculto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-modal-obs"
+    >
+      <div class="overlay-background"></div>
+      <div id="modal-obs" class="modal-obs modal-container">
+        <div class="modal-cabecalho">
+          <h2 id="titulo-modal-obs" class="modal-titulo">Observação</h2>
+          <button
+            type="button"
+            id="btn-fechar-modal"
+            class="btn-fechar"
+            aria-label="Fechar"
+          >
+            &times;
+          </button>
+        </div>
+
+        <form id="form-obs" class="form-matricula">
+          <div class="modal-corpo">
+            <div class="grade-campos">
+              <div class="campo campo-inteiro">
+                <label for="obs-texto">Observações da coordenação</label>
+                <textarea
+                  id="obs-texto"
+                  name="obs"
+                  class="campo-textarea"
+                  rows="4"
+                  placeholder="Anotações da coordenação..."
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-rodape">
+            <button type="button" id="btn-cancelar-obs" class="btn-cancelar">
+              Cancelar
+            </button>
+            <button type="submit" id="btn-adicionar-obs" class="btn-salvar">
+              Adicionar
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
-
-<div id="overlay-modal" class="overlay-modal oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-matricula">
-  <div class="overlay-background"></div>
-  <div id="modal-obs" class="modal-obs modal-container">
-    <div class="modal-cabecalho">
-      <h2 id="titulo-modal-matricula" class="modal-titulo">Observações</h2>
-      <button type="button" id="btn-fechar-modal" class="btn-fechar" aria-label="Fechar">&times;</button>
-      
     </div>
-    <p id="obs">Texto observação</p>
-    
-        </div>
-      
-</div>
 
+    <div
+      id="overlay-modal"
+      class="overlay-modal oculto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-modal-matricula"
+    >
+      <div class="overlay-background"></div>
+      <div id="modal-obs" class="modal-obs modal-container">
+        <div class="modal-cabecalho">
+          <h2 id="titulo-modal-matricula" class="modal-titulo">Editar</h2>
+          <button
+            type="button"
+            id="btn-fechar-modal"
+            class="btn-fechar"
+            aria-label="Fechar"
+          >
+            &times;
+          </button>
+        </div>
+        <form id="form-matricula" class="form-matricula">
+          <div class="modal-corpo">
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="nome">Nome</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="Nome"
+                  class="campo-input"
+                  placeholder="Nome completo do aluno"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="turma">Turma</label>
+                <input
+                  type="text"
+                  id="turma"
+                  name="turma"
+                  class="campo-input"
+                  placeholder="1º A"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="cpf">CPF</label>
+                <input
+                  type="text"
+                  id="cpf"
+                  name="cpf"
+                  class="campo-input"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="telefone">Telefone</label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="Telefone"
+                  class="campo-input"
+                  placeholder="(00) 00000-0000"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="r-nome">Nome do responsável</label>
+                <input
+                  type="text"
+                  id="r-nome"
+                  name="r-Nome"
+                  class="campo-input"
+                  placeholder="Nome completo do responsável"
+                  required
+                />
+              </div>
+
+              <div class="campo">
+                <label for="r-contato">Contato do responsável</label>
+                <input
+                  type="tel"
+                  id="r-contato"
+                  name="r-Contato"
+                  class="campo-input"
+                  placeholder="(00) 00000-0000"
+                  required
+                />
+              </div>
+            </div>
+
+            <div id="grupo-notas" class="grade-notas">
+              <div class="campo">
+                <label for="nb1">1º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb1"
+                  name="nb1"
+                  class="campo-input campo-nota"
+                  data-bimestre="1"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb2">2º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb2"
+                  name="nb2"
+                  class="campo-input campo-nota"
+                  data-bimestre="2"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb3">3º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb3"
+                  name="nb3"
+                  class="campo-input campo-nota"
+                  data-bimestre="3"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+
+              <div class="campo">
+                <label for="nb4">4º Bimestre</label>
+                <input
+                  type="number"
+                  id="nb4"
+                  name="nb4"
+                  class="campo-input campo-nota"
+                  data-bimestre="4"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  placeholder="0.0"
+                />
+              </div>
+            </div>
+
+            <div class="grade-campos">
+              <div class="campo">
+                <label for="media">Média</label>
+                <input
+                  type="number"
+                  id="media"
+                  name="Media"
+                  class="campo-input campo-media"
+                  step="0.1"
+                  placeholder="0.0"
+                  readonly
+                />
+              </div>
+
+              <div class="campo">
+                <label for="faltas">Faltas</label>
+                <input
+                  type="number"
+                  id="faltas"
+                  name="Faltas"
+                  class="campo-input campo-faltas"
+                  min="0"
+                  step="1"
+                  placeholder="0"
+                />
+              </div>
+
+              
+            </div>
+          </div>
+
+          <div class="modal-rodape">
+            <button type="button" id="btn-cancelar" class="btn-cancelar">
+              Cancelar
+            </button>
+            <button type="submit" id="btn-salvar-matricula" class="btn-salvar">
+              Salvar edição
+            </button>
+          </div>
+        </form>     
+      </div>
+    </div>
   </body>
 </html>
